@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,23 +30,6 @@ BattleGroundSA::BattleGroundSA()
     m_StartMessageIds[BG_STARTING_EVENT_FOURTH] = LANG_BG_WS_HAS_BEGUN;
 }
 
-BattleGroundSA::~BattleGroundSA()
-{
-}
-
-void BattleGroundSA::Update(uint32 diff)
-{
-    BattleGround::Update(diff);
-}
-
-void BattleGroundSA::StartingEventCloseDoors()
-{
-}
-
-void BattleGroundSA::StartingEventOpenDoors()
-{
-}
-
 void BattleGroundSA::AddPlayer(Player* plr)
 {
     BattleGround::AddPlayer(plr);
@@ -54,17 +37,6 @@ void BattleGroundSA::AddPlayer(Player* plr)
     BattleGroundSAScore* sc = new BattleGroundSAScore;
 
     m_PlayerScores[plr->GetObjectGuid()] = sc;
-}
-
-void BattleGroundSA::RemovePlayer(Player* /*plr*/, ObjectGuid /*guid*/)
-{
-}
-
-void BattleGroundSA::HandleAreaTrigger(Player* /*source*/, uint32 /*trigger*/)
-{
-    // this is wrong way to implement these things. On official it done by gameobject spell cast.
-    if (GetStatus() != STATUS_IN_PROGRESS)
-        return;
 }
 
 void BattleGroundSA::UpdatePlayerScore(Player* source, uint32 type, uint32 value)

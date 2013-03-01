@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,17 +34,8 @@ class BattleGroundDS : public BattleGround
 
     public:
         BattleGroundDS();
-        ~BattleGroundDS();
-        void Update(uint32 diff) override;
 
         /* inherited from BattlegroundClass */
         virtual void AddPlayer(Player* plr) override;
-        virtual void StartingEventCloseDoors() override;
-        virtual void StartingEventOpenDoors() override;
-
-        void RemovePlayer(Player* plr, ObjectGuid guid) override;
-        void HandleAreaTrigger(Player* source, uint32 trigger) override;
-        bool SetupBattleGround() override;
-        void HandleKillPlayer(Player* player, Player* killer) override;
 };
 #endif

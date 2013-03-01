@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
  */
 
 #include "MassMailMgr.h"
-#include "Policies/SingletonImp.h"
+#include "Policies/Singleton.h"
 #include "Database/DatabaseEnv.h"
 #include "Database/DatabaseImpl.h"
 #include "SharedDefines.h"

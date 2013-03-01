@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -3159,6 +3159,9 @@ SpellAuraProcResult Unit::HandleProcTriggerSpellAuraProc(Unit* pVictim, uint32 d
                 }
                 basepoints[0] = damage * triggerAmount / 100 / 3;
                 target = this;
+                // increase healing factor with each critical strike. Patch 3.0.2
+                if (Aura* old_aura = GetAura(trigger_spell_id, EFFECT_INDEX_0))
+                    basepoints[0] += old_aura->GetModifier()->m_amount;
             }
             // Glyph of Shadow Word: Pain
             else if (auraSpellInfo->Id == 55681)

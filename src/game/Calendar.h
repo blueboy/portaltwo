@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #ifndef MANGOS_CALENDAR_H
 #define MANGOS_CALENDAR_H
 
-#include "Policies/SingletonImp.h"
+#include "Policies/Singleton.h"
 #include "Common.h"
 #include "ObjectGuid.h"
 #include "SharedDefines.h"
@@ -148,7 +148,7 @@ class CalendarEvent
             Description(description) { }
 
         CalendarEvent() : EventId(0), CreatorGuid(uint64(0)), GuildId(0), Type(CALENDAR_TYPE_OTHER), DungeonId(-1), EventTime(0),
-            Flags(0), UnknownTime(0), Title(), Description() { }
+            Flags(0), UnknownTime(0) { }
 
         ~CalendarEvent();
 

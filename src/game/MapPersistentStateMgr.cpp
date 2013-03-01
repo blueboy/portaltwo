@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -977,8 +977,19 @@ void MapPersistentStateManager::LoadCreatureRespawnTimes()
             continue;
 
         MapEntry const* mapEntry = sMapStore.LookupEntry(data->mapid);
-        if (!mapEntry || (instanceId && (mapId != data->mapid || mapEntry->Instanceable())))
+        if (!mapEntry)
             continue;
+
+        if (instanceId)                                     // In instance - mapId must be data->mapid and mapEntry must be Instanceable
+        {
+            if (mapId != data->mapid || !mapEntry->Instanceable())
+                continue;
+        }
+        else                                                // Not in instance, mapEntry must not be Instanceable
+        {
+            if (mapEntry->Instanceable())
+                continue;
+        }
 
         if (difficulty >= (!mapEntry->Instanceable() ? REGULAR_DIFFICULTY + 1 : (mapEntry->IsRaid() ? MAX_RAID_DIFFICULTY : MAX_DUNGEON_DIFFICULTY)))
             continue;
@@ -1040,8 +1051,19 @@ void MapPersistentStateManager::LoadGameobjectRespawnTimes()
             continue;
 
         MapEntry const* mapEntry = sMapStore.LookupEntry(data->mapid);
-        if (!mapEntry || (instanceId && (mapId != data->mapid || mapEntry->Instanceable())))
+        if (!mapEntry)
             continue;
+
+        if (instanceId)                                     // In instance - mapId must be data->mapid and mapEntry must be Instanceable
+        {
+            if (mapId != data->mapid || !mapEntry->Instanceable())
+                continue;
+        }
+        else                                                // Not in instance, mapEntry must not be Instanceable
+        {
+            if (mapEntry->Instanceable())
+                continue;
+        }
 
         if (difficulty >= (!mapEntry->Instanceable() ? REGULAR_DIFFICULTY + 1 : (mapEntry->IsRaid() ? MAX_RAID_DIFFICULTY : MAX_DUNGEON_DIFFICULTY)))
             continue;

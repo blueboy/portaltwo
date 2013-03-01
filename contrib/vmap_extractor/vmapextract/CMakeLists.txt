@@ -1,4 +1,4 @@
-# This file is part of the Continued-MaNGOS Project
+# Copyright (C) 2005-2012 MaNGOS project <http://getmangos.com/>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -11,6 +11,6 @@
 cmake_minimum_required (VERSION 2.6)
 project (MANGOS_IOMAP_EXTRACTOR)
 
-LINK_DIRECTORIES( ${LINK_DIRECTORIES} ../../../dep/libmpq/libmpq/.libs/ )
+LINK_DIRECTORIES( ${LINK_DIRECTORIES} ${CMAKE_SOURCE_DIR}/../../dep/libmpq/libmpq/.libs/ )
 add_executable(vmapextractor adtfile.cpp  dbcfile.cpp gameobject_extract.cpp model.cpp  mpq_libmpq.cpp  vmapexport.cpp  wdtfile.cpp  wmo.cpp)
-target_link_libraries(vmapextractor libmpq.a bz2 z)
+target_link_libraries(vmapextractor mpq bz2 z)

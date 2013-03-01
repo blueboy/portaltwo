@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,8 +53,8 @@
 #define NUM_DATABASES 3
 
 char remotes[NUM_REMOTES][MAX_REMOTE] = {
-    "git@github.com:cmangos/mangos-wotlk.git",
-    "git://github.com/cmangos/mangos-wotlk.git"             // used for fetch if present
+    "git@github.com:mangostwo/server.git",
+    "git://github.com/mangostwo/server.git"        // used for fetch if present
 };
 
 char remote_branch[MAX_REMOTE] = "master";
@@ -131,8 +131,8 @@ bool find_path()
 
     // don't count the root
     int count_fwd = 0, count_back = 0;
-    for(ptr = cur_path-1; ptr = strchr(ptr+1, '/'); count_fwd++);
-    for(ptr = cur_path-1; ptr = strchr(ptr+1, '\\'); count_back++);
+    for(ptr = cur_path-1; ptr == strchr(ptr+1, '/'); count_fwd++);
+    for(ptr = cur_path-1; ptr == strchr(ptr+1, '\\'); count_back++);
     int count = std::max(count_fwd, count_back);
 
     char path[MAX_PATH];
@@ -640,7 +640,7 @@ bool generate_sql_makefile()
     if(!fout) { pclose(cmd_pipe); return false; }
 
     fprintf(fout,
-        "# This file is part of the Continued-MaNGOS Project\n"
+        "# Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>\n"
         "#\n"
         "# This program is free software; you can redistribute it and/or modify\n"
         "# it under the terms of the GNU General Public License as published by\n"

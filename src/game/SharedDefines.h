@@ -1,5 +1,5 @@
 /*
- * This file is part of the Continued-MaNGOS Project
+ * Copyright (C) 2005-2013 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -3026,6 +3026,13 @@ enum TrackedAuraType
 // account with expansion > client supported will rejected at connection by client
 // because if client receive unsupported expansion level it think
 // that it not have expansion installed and reject
+enum Expansions
+{
+    EXPANSION_NONE                      = 0,                // classic
+    EXPANSION_TBC                       = 1,                // TBC
+    EXPANSION_WOTLK                     = 2,                // WotLK
+};
+
 #define MAX_EXPANSION 2
 
 // Maxlevel for expansion
